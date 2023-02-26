@@ -1,10 +1,9 @@
 using FluentValidation;
 using GerenciamentoFrota.Application.Extensions;
 using GerenciamentoFrota.Application.Veiculos;
-using GerenciamentoFrota.Infra.Shared;
+using GerenciamentoFrota.Infra.Shared.Extensions;
 using GerenciamentoFrota.Infra.Veiculos;
 using MediatR;
-using MongoDB.ApplicationInsights.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,31 +11,17 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(config =>
-{
-    config.AddPolicy(name: "GerenciamentoFrota", policy =>
-    {
-        policy.WithOrigins("http://localhost:4200")
-        .AllowAnyHeader()
-        .AllowAnyMethod();
-    });
-});
+builder.Services.AddScoped<IVeiculoService, VeiculoService>();
 
-builder.Services.RegisterRequestHandlers();
+builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
 
-builder.Services.RegisterValidationHandlers();
+builder.RegisterRequestHandlers();
 
-builder.Services.AddMongoClient("mongodb://usr:pwd@host.docker.internal:27017/?authMechanism=SCRAM-SHA-256");
+builder.RegisterValidationHandlers();
 
-builder.Services.AddStackExchangeRedisCache(config =>
-{
-    config.Configuration = "host.docker.internal";
-    config.InstanceName = "Frota";
-});
+builder.ConfigureRedis();
 
-builder.Services.AddScoped<VeiculoService>();
-
-builder.Services.AddScoped<VeiculoRepository>();
+builder.ConfigureMongoClient();
 
 var app = builder.Build();
 
@@ -46,7 +31,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("GerenciamentoFrota");
+app.UseCors(options =>
+{
+    options
+        .AllowAnyHeader()
+        .AllowAnyOrigin()
+        .AllowAnyMethod();
+});
 
 app.UseHttpsRedirection();
 

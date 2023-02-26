@@ -8,9 +8,9 @@ namespace GerenciamentoFrota.Application.Veiculos
 {
     public class VisualizarVeiculoPorChassiHandler : IRequestHandler<VisualizarVeiculoCommandPorChassi, Result<Exception, Veiculo>>
     {
-        private readonly VeiculoService _service;
+        private readonly IVeiculoService _service;
 
-        public VisualizarVeiculoPorChassiHandler(VeiculoService service)
+        public VisualizarVeiculoPorChassiHandler(IVeiculoService service)
         {
             _service = service;
         }

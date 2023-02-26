@@ -6,9 +6,9 @@ namespace GerenciamentoFrota.Application.Veiculos
 {
     public class ExcluirVeiculoHandler : IRequestHandler<ExcluirVeiculoCommand, Result<Exception, Unit>>
     {
-        private readonly VeiculoService _service;
+        private readonly IVeiculoService _service;
 
-        public ExcluirVeiculoHandler(VeiculoService service)
+        public ExcluirVeiculoHandler(IVeiculoService service)
         {
             _service = service;
         }

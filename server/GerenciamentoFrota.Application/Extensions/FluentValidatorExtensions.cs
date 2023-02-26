@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 using System.Reflection;
 
 namespace GerenciamentoFrota.Application.Extensions
 {
     public static class FluentValidatorExtensions
     {
-        public static void RegisterValidationHandlers(this IServiceCollection services)
+        public static void RegisterValidationHandlers(this WebApplicationBuilder builder)
         {
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
     }

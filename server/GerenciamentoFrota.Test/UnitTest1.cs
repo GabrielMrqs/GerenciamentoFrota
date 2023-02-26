@@ -96,5 +96,45 @@ namespace GerenciamentoFrota.Test
 
             result.IsSuccess.Should().BeFalse();
         }
+
+        [Fact]
+        public async Task DeveExcluirVeiculo()
+        {
+            var chassi = "12345678901234567";
+
+            var command = new ExcluirVeiculoCommand(chassi);
+
+            _veiculoServiceMock.Setup(x =>
+            x.ExisteVeiculoPeloChassi(It.IsAny<string>())).Returns(Task.FromResult(true));
+
+            var handler = new ExcluirVeiculoHandler(_veiculoServiceMock.Object);
+
+            var result = await handler.Handle(command, default);
+
+            result.IsSuccess.Should().BeTrue();
+
+            result.IsFailure.Should().BeFalse();
+        }
+
+        [Fact]
+        public async Task NaoDeveExcluirVeiculo()
+        {
+            var chassi = "12345678901234567";
+
+            var command = new ExcluirVeiculoCommand(chassi);
+
+            _veiculoServiceMock.Setup(x =>
+            x.ExisteVeiculoPeloChassi(It.IsAny<string>())).Returns(Task.FromResult(false));
+
+            var handler = new ExcluirVeiculoHandler(_veiculoServiceMock.Object);
+
+            var result = await handler.Handle(command, default);
+
+            result.IsSuccess.Should().BeFalse();
+
+            result.Failure.Message.Should().Be($"Não foi encontrado veículo com o chassi: {chassi}");
+
+            result.IsFailure.Should().BeTrue();
+        }
     }
 }

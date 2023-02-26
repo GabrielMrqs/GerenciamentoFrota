@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace GerenciamentoFrota.Infra.Shared
+namespace GerenciamentoFrota.Infra.Shared.Extensions
 {
     public static class FluentValidationExtensions
     {
