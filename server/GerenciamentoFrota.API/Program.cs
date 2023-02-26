@@ -23,6 +23,16 @@ builder.ConfigureRedis();
 
 builder.ConfigureMongoClient();
 
+builder.Services.AddCors(config =>
+{
+    config.AddPolicy(name: "GerenciamentoFrota", policy =>
+    {
+        policy.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -31,13 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(options =>
-{
-    options
-        .AllowAnyHeader()
-        .AllowAnyOrigin()
-        .AllowAnyMethod();
-});
+app.UseCors("GerenciamentoFrota");
 
 app.UseHttpsRedirection();
 
@@ -96,25 +100,25 @@ app.MapDelete("/ExcluirVeiculo", async (IMediator mediator, string chassi) =>
 
 app.MapGet("/VisualizarVeiculoPorChassi",
     async (IMediator mediator, IValidator<VisualizarVeiculoCommandPorChassi> validator, string chassi) =>
-{
-    var visualizarVeiculoCommand = new VisualizarVeiculoCommandPorChassi(chassi);
-
-    var validation = await validator.ValidateAsync(visualizarVeiculoCommand);
-
-    if (!validation.IsValid)
     {
-        return Results.BadRequest(validation.Errors.ErrorsOnly());
-    }
+        var visualizarVeiculoCommand = new VisualizarVeiculoCommandPorChassi(chassi);
 
-    var callback = await mediator.Send(visualizarVeiculoCommand);
+        var validation = await validator.ValidateAsync(visualizarVeiculoCommand);
 
-    if (callback.IsFailure)
-    {
-        return Results.BadRequest(callback.Failure.Message);
-    }
+        if (!validation.IsValid)
+        {
+            return Results.BadRequest(validation.Errors.ErrorsOnly());
+        }
 
-    return Results.Ok(callback.Success);
-})
+        var callback = await mediator.Send(visualizarVeiculoCommand);
+
+        if (callback.IsFailure)
+        {
+            return Results.BadRequest(callback.Failure.Message);
+        }
+
+        return Results.Ok(callback.Success);
+    })
 .WithName("Visualizar veículo por chassi");
 
 app.MapGet("/VisualizarTodosVeiculos", async (IMediator mediator) =>

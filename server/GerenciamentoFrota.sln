@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoFrota.API", "GerenciamentoFrota.API\GerenciamentoFrota.API.csproj", "{6CEC3C67-B2CE-4892-835C-B6BF6BE4725B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoFrota.Application", "GerenciamentoFrota.Application\GerenciamentoFrota.Application.csproj", "{F43DF5ED-0C65-4FE9-AC7E-F4DE7F912818}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoFrota.Domain", "GerenciamentoFrota.Domain\GerenciamentoFrota.Domain.csproj", "{0C79DE57-7045-4B8A-9354-3A05A71E70A5}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8938032E-EF3E-41B2-A6AB-CAB0F8711500}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoFrota.Infra", "GerenciamentoFrota.Infra\GerenciamentoFrota.Infra.csproj", "{DE595BAA-F78F-4B87-9F02-66150428CD1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciamentoFrota.Test", "GerenciamentoFrota.Test\GerenciamentoFrota.Test.csproj", "{9A64C79D-BAE9-4338-BF40-3E684352BE30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciamentoFrota.Test", "GerenciamentoFrota.Test\GerenciamentoFrota.Test.csproj", "{9A64C79D-BAE9-4338-BF40-3E684352BE30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciamentoFrota.API", "GerenciamentoFrota.API\GerenciamentoFrota.API.csproj", "{8A60EDCC-7DE5-4571-BC07-26B8505C2003}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CACB1676-E910-42CA-99ED-465AE172B30B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6CEC3C67-B2CE-4892-835C-B6BF6BE4725B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CEC3C67-B2CE-4892-835C-B6BF6BE4725B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CEC3C67-B2CE-4892-835C-B6BF6BE4725B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CEC3C67-B2CE-4892-835C-B6BF6BE4725B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F43DF5ED-0C65-4FE9-AC7E-F4DE7F912818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F43DF5ED-0C65-4FE9-AC7E-F4DE7F912818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F43DF5ED-0C65-4FE9-AC7E-F4DE7F912818}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,10 +29,6 @@ Global
 		{0C79DE57-7045-4B8A-9354-3A05A71E70A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C79DE57-7045-4B8A-9354-3A05A71E70A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C79DE57-7045-4B8A-9354-3A05A71E70A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8938032E-EF3E-41B2-A6AB-CAB0F8711500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8938032E-EF3E-41B2-A6AB-CAB0F8711500}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8938032E-EF3E-41B2-A6AB-CAB0F8711500}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8938032E-EF3E-41B2-A6AB-CAB0F8711500}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE595BAA-F78F-4B87-9F02-66150428CD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE595BAA-F78F-4B87-9F02-66150428CD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE595BAA-F78F-4B87-9F02-66150428CD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +37,14 @@ Global
 		{9A64C79D-BAE9-4338-BF40-3E684352BE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A64C79D-BAE9-4338-BF40-3E684352BE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A64C79D-BAE9-4338-BF40-3E684352BE30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A60EDCC-7DE5-4571-BC07-26B8505C2003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A60EDCC-7DE5-4571-BC07-26B8505C2003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A60EDCC-7DE5-4571-BC07-26B8505C2003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A60EDCC-7DE5-4571-BC07-26B8505C2003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACB1676-E910-42CA-99ED-465AE172B30B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACB1676-E910-42CA-99ED-465AE172B30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACB1676-E910-42CA-99ED-465AE172B30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CACB1676-E910-42CA-99ED-465AE172B30B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

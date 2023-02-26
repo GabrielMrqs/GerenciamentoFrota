@@ -10,7 +10,10 @@ services:
     environment:
         MONGO_PASSWORD: ${MONGO_PASSWORD}
     ports:
-      - 6000:6000
+      - "51230:80"
+    depends_on:
+      - mongo
+      - redis
 
   mongo:
     image: mongo
@@ -20,7 +23,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: usr
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
-      - 27017:27017
+      - "27017:27017"
 
   redis:
     image: redis
@@ -31,7 +34,7 @@ services:
     environment:
       REDIS_PASSWORD: pwd
     ports:
-      - 6379:6379
+      - "6379:6379"
 
   redis-commander:
      container_name: redis-commander
@@ -40,7 +43,21 @@ services:
      environment:
        REDIS_HOSTS: local:redis:6379
      ports:
-       - 8081:8081
+       - "8081:8081"
+     depends_on:
+       - redis
+
+  front-end:
+    container_name: front-end
+    restart: always
+    image: front-end
+    build:
+      context: ../client/.
+      dockerfile: ../client/Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - gerenciamentofrota.api
 
 volumes:
   cache:

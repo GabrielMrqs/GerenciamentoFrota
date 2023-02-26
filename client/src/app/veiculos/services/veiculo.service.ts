@@ -10,7 +10,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 })
 export class VeiculoService {
 
-  private url = "https://localhost:60783"
+  private url = "http://localhost:51230"
 
   constructor(private http: HttpClient,
     public dialog: MatDialog) { }
