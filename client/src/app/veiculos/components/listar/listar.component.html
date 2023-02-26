@@ -1,0 +1,42 @@
+<mat-table [dataSource]="veiculos">
+    <ng-container matColumnDef="chassi">
+        <mat-header-cell *matHeaderCellDef> Chassi </mat-header-cell>
+        <mat-cell *matCellDef="let veiculo"> {{veiculo.chassi}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoVeiculo">
+        <mat-header-cell *matHeaderCellDef> Tipo de Veículo </mat-header-cell>
+        <mat-cell *matCellDef="let veiculo"> {{getTipoVeiculo(veiculo.tipoVeiculo)}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cor">
+        <mat-header-cell *matHeaderCellDef> Cor </mat-header-cell>
+        <mat-cell *matCellDef="let veiculo"> {{veiculo.cor}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroPassageiros">
+        <mat-header-cell *matHeaderCellDef> Nº Passageiros </mat-header-cell>
+        <mat-cell *matCellDef="let veiculo"> {{veiculo.numeroPassageiros}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="action-column-header">
+            <button class="btn-space" (click)="onAdd()" mat-mini-fab color="accent" aria-label="Adicionar um veículo">
+                <mat-icon>add</mat-icon>
+            </button>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let veiculo" class="action-column">
+            <button class="btn-space" (click)="onEdit(veiculo)" mat-mini-fab color="primary" aria-label="Editar um veículo">
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <button class="btn-space" (click)="onDelete(veiculo)" mat-mini-fab color="warn" aria-label="Remover um veículo">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
