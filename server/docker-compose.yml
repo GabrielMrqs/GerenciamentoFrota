@@ -31,6 +31,8 @@ services:
     restart: always
     volumes: 
       - cache:/data
+    environment:
+      REDIS_PASSWORD: pwd
     ports:
       - "6379:6379"
 
