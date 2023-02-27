@@ -6,7 +6,7 @@ using MediatR;
 
 namespace GerenciamentoFrota.Application.Veiculos
 {
-    public class VisualizarVeiculoPorChassiHandler : IRequestHandler<VisualizarVeiculoCommandPorChassi, Result<Exception, Veiculo>>
+    public class VisualizarVeiculoPorChassiHandler : IRequestHandler<VisualizarVeiculoPorChassiCommand, Result<Exception, Veiculo>>
     {
         private readonly IVeiculoService _service;
 
@@ -15,7 +15,7 @@ namespace GerenciamentoFrota.Application.Veiculos
             _service = service;
         }
 
-        public async Task<Result<Exception, Veiculo>> Handle(VisualizarVeiculoCommandPorChassi request, CancellationToken cancellationToken)
+        public async Task<Result<Exception, Veiculo>> Handle(VisualizarVeiculoPorChassiCommand request, CancellationToken cancellationToken)
         {
             var chassi = request.Chassi;
 
@@ -29,9 +29,9 @@ namespace GerenciamentoFrota.Application.Veiculos
             return veiculo;
         }
     }
-    public record VisualizarVeiculoCommandPorChassi(string Chassi) : IRequest<Result<Exception, Veiculo>>;
+    public record VisualizarVeiculoPorChassiCommand(string Chassi) : IRequest<Result<Exception, Veiculo>>;
 
-    public class VisualizarVeiculoPorChassiCommandValidator : AbstractValidator<VisualizarVeiculoCommandPorChassi>
+    public class VisualizarVeiculoPorChassiCommandValidator : AbstractValidator<VisualizarVeiculoPorChassiCommand>
     {
         public VisualizarVeiculoPorChassiCommandValidator()
         {

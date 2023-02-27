@@ -1,4 +1,5 @@
-﻿using GerenciamentoFrota.Domain.Shared;
+﻿using FluentValidation;
+using GerenciamentoFrota.Domain.Shared;
 using GerenciamentoFrota.Infra.Veiculos;
 using MediatR;
 
@@ -31,4 +32,13 @@ namespace GerenciamentoFrota.Application.Veiculos
     }
 
     public record ExcluirVeiculoCommand(string Chassi) : IRequest<Result<Exception, Unit>>;
+
+    public class ExcluirVeiculoCommandValidator : AbstractValidator<ExcluirVeiculoCommand>
+    {
+        public ExcluirVeiculoCommandValidator()
+        {
+            RuleFor(x => x.Chassi)
+                .Length(17).WithMessage("O chassi deve ter 17 caracteres");
+        }
+    }
 }

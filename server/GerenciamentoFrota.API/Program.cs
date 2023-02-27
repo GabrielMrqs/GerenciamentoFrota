@@ -99,9 +99,9 @@ app.MapDelete("/ExcluirVeiculo", async (IMediator mediator, string chassi) =>
 .WithName("Excluir veículo");
 
 app.MapGet("/VisualizarVeiculoPorChassi",
-    async (IMediator mediator, IValidator<VisualizarVeiculoCommandPorChassi> validator, string chassi) =>
+    async (IMediator mediator, IValidator<VisualizarVeiculoPorChassiCommand> validator, string chassi) =>
     {
-        var visualizarVeiculoCommand = new VisualizarVeiculoCommandPorChassi(chassi);
+        var visualizarVeiculoCommand = new VisualizarVeiculoPorChassiCommand(chassi);
 
         var validation = await validator.ValidateAsync(visualizarVeiculoCommand);
 
