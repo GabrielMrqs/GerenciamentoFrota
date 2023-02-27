@@ -1,4 +1,9 @@
-<mat-table [dataSource]="veiculos">
+<mat-form-field class="filter">
+    <mat-label>Chassi</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="chassi">
         <mat-header-cell *matHeaderCellDef> Chassi </mat-header-cell>
         <mat-cell *matCellDef="let veiculo"> {{veiculo.chassi}} </mat-cell>
@@ -27,11 +32,13 @@
         </mat-header-cell>
 
         <mat-cell *matCellDef="let veiculo" class="action-column">
-            <button class="btn-space" (click)="onEdit(veiculo)" mat-mini-fab color="primary" aria-label="Editar um veículo">
+            <button class="btn-space" (click)="onEdit(veiculo)" mat-mini-fab color="primary"
+                aria-label="Editar um veículo">
                 <mat-icon>edit</mat-icon>
             </button>
 
-            <button class="btn-space" (click)="onDelete(veiculo)" mat-mini-fab color="warn" aria-label="Remover um veículo">
+            <button class="btn-space" (click)="onDelete(veiculo)" mat-mini-fab color="warn"
+                aria-label="Remover um veículo">
                 <mat-icon>delete</mat-icon>
             </button>
         </mat-cell>
