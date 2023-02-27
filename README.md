@@ -15,3 +15,13 @@ Há duas formas de rodar a solução.
   Clicar em iniciar pelo Docker Compose
 
 </pre>
+
+# URLs
+
+<pre>
+
+localhost:4200 - Aplicação front-end 
+localhost:8081 - Manager de cache do Redis
+localhost:8082 - Manager do banco de dados do MongoDB
+
+</pre>
