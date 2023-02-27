@@ -5,13 +5,8 @@
                 <span>Veículos</span>
             </mat-toolbar>
 
-            <app-listar 
-            *ngIf="veiculos$ | async as veiculos; else loading"
-            [veiculos]="veiculos"
-            (add)="onAdd()"
-            (edit)="onEdit($event)"
-            (delete)="onDelete($event)"
-            ></app-listar>
+            <app-listar *ngIf="veiculos$ | async as veiculos; else loading" [veiculos]="veiculos" (add)="onAdd()"
+                (edit)="onEdit($event)" (delete)="onDelete($event)"></app-listar>
 
             <ng-template #loading>
                 <div class="loading-spinner">
@@ -20,4 +15,19 @@
             </ng-template>
         </div>
     </mat-card-content>
+</mat-card>
+
+<mat-card class="criar-novo" *ngIf="naoPossuiVeiculo">
+    <img mat-card-image src="https://portallubes.com.br/wp-content/uploads/2017/04/caminhao-onibus-1.png">
+    <mat-card-content>
+        <h3>
+            Parece que você não tem nenhum veículo cadastrado :(
+        </h3>
+        <h3>
+            Comece cadastrando um agora mesmo!
+        </h3>
+    </mat-card-content>
+    <mat-card-actions>
+        <button color="primary" mat-raised-button (click)="onAdd()" mat-button>Criar</button>
+    </mat-card-actions>
 </mat-card>

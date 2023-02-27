@@ -20,7 +20,7 @@ export class VeiculoService {
       .pipe(
         first(),
         // delay(5000),
-        retry(1),
+        // retry(1),
         catchError(error => {
           this.onError(error.error)
           return of([]);
@@ -33,7 +33,7 @@ export class VeiculoService {
       .pipe(
         first(),
         // delay(5000),
-        retry(1),
+        // retry(1),
         catchError(error => {
           this.onError(error.error)
           return of();
@@ -46,7 +46,7 @@ export class VeiculoService {
       .pipe(
         first(),
         // delay(5000),
-        retry(1),
+        // retry(1),
         catchError(error => {
           this.onError(error.error)
           return of();
@@ -59,7 +59,7 @@ export class VeiculoService {
       .pipe(
         first(),
         // delay(5000),
-        retry(1),
+        // retry(1),
         catchError(error => {
           this.onError(error.error)
           return of();
@@ -72,7 +72,7 @@ export class VeiculoService {
       .pipe(
         first(),
         // delay(5000),
-        retry(1),
+        // retry(1),
         catchError(error => {
           this.onError(error.error)
           return of();

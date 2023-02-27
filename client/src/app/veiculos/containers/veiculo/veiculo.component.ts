@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, isEmpty } from 'rxjs';
 import { Veiculo } from '../../models/veiculo.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VeiculoService } from '../../services/veiculo.service';
@@ -15,6 +15,7 @@ import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmat
 export class VeiculoComponent implements OnInit {
   veiculos$: Observable<Veiculo[]>;
   displayedColumns = ['chassi', 'tipoVeiculo', 'cor', 'numeroPassageiros', 'actions'];
+  naoPossuiVeiculo: boolean;
 
   constructor(
     private service: VeiculoService,
@@ -54,6 +55,9 @@ export class VeiculoComponent implements OnInit {
 
   private refresh() {
     this.veiculos$ = this.service.obterTodosVeiculos();
+    this.veiculos$.subscribe((result => {
+      this.naoPossuiVeiculo = !result.length;
+    }))
   }
 
   private onSuccess() {
