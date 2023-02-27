@@ -1,5 +1,7 @@
 # GerenciamentoFrota
 
+<pre>
+
 Há duas formas de rodar a solução.
 
 1ª:
@@ -11,3 +13,5 @@ Há duas formas de rodar a solução.
   Abrir a solução da pasta "server" no Visual Studio
   Selecionar o projeto "docker-compose" como Startup
   Clicar em iniciar pelo Docker Compose
+
+</pre>
