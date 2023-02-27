@@ -6,12 +6,12 @@ using Moq;
 
 namespace GerenciamentoFrota.Test
 {
-    public class UnitTest1
+    public class HandlersTests
     {
         private readonly Mock<IVeiculoService> _veiculoServiceMock;
         private readonly Mock<Veiculo> _veiculo;
 
-        public UnitTest1()
+        public HandlersTests()
         {
             _veiculoServiceMock = new();
             _veiculo = new();

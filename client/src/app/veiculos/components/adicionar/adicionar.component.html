@@ -33,7 +33,7 @@
 
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Nº de Passageiros</mat-label>
-                <input matInput formControlName="numeroPassageiros">
+                <input [readonly]="true" matInput formControlName="numeroPassageiros">
             </mat-form-field>
 
             <mat-card-actions>
